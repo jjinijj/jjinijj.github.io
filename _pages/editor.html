@@ -1,0 +1,283 @@
+---
+layout: page
+title: Markdown Editor
+permalink: /editor/
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마크다운 에디터</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .editor-container {
+            display: flex;
+            height: 100vh;
+            gap: 0;
+        }
+
+        .editor-section, .preview-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-section {
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+        }
+
+        .preview-section {
+            background-color: #fafafa;
+            overflow-y: auto;
+        }
+
+        .section-header {
+            padding: 15px;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+
+        textarea {
+            flex: 1;
+            padding: 20px;
+            border: none;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: none;
+            line-height: 1.6;
+        }
+
+        .preview-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            line-height: 1.8;
+        }
+
+        .preview-content h1, .preview-content h2, .preview-content h3,
+        .preview-content h4, .preview-content h5, .preview-content h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .preview-content h1 { font-size: 2em; }
+        .preview-content h2 { font-size: 1.75em; border-bottom: 2px solid #eee; padding-bottom: 0.3em; }
+        .preview-content h3 { font-size: 1.5em; }
+        .preview-content h4 { font-size: 1.25em; }
+        .preview-content h5 { font-size: 1.1em; }
+        .preview-content h6 { font-size: 1em; color: #666; }
+
+        .preview-content p {
+            margin-bottom: 1em;
+        }
+
+        .preview-content ul, .preview-content ol {
+            margin-left: 2em;
+            margin-bottom: 1em;
+        }
+
+        .preview-content li {
+            margin-bottom: 0.5em;
+        }
+
+        .preview-content code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .preview-content pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1em;
+        }
+
+        .preview-content pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        .preview-content blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 1em;
+            margin-left: 0;
+            margin-bottom: 1em;
+            color: #666;
+        }
+
+        .preview-content a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .preview-content a:hover {
+            text-decoration: underline;
+        }
+
+        .preview-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+
+        .preview-content th, .preview-content td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .preview-content th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .controls {
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button.secondary {
+            background-color: #95a5a6;
+        }
+
+        button.secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        @media (max-width: 1024px) {
+            .editor-container {
+                flex-direction: column;
+            }
+
+            .editor-section, .preview-section {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <div class="editor-section">
+            <div class="section-header">📝 마크다운 입력</div>
+            <textarea id="markdown-input" placeholder="마크다운을 입력하세요...
+
+# 제목
+## 소제목
+
+**굵은 텍스트**
+*기울임 텍스트*
+
+- 리스트 항목 1
+- 리스트 항목 2
+
+[링크](https://example.com)
+
+```
+코드 블록
+```
+"></textarea>
+            <div class="controls">
+                <button onclick="downloadMarkdown()">📥 마크다운 다운로드</button>
+                <button class="secondary" onclick="clearEditor()">🗑️ 초기화</button>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">👁️ 미리보기</div>
+            <div class="preview-content" id="preview"></div>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('markdown-input');
+        const preview = document.getElementById('preview');
+
+        // 마크다운 렌더링
+        function updatePreview() {
+            const markdown = textarea.value;
+            const html = marked.parse(markdown);
+            preview.innerHTML = html;
+        }
+
+        // 입력할 때마다 미리보기 업데이트
+        textarea.addEventListener('input', updatePreview);
+
+        // 초기 렌더링
+        updatePreview();
+
+        // 마크다운 다운로드
+        function downloadMarkdown() {
+            const content = textarea.value;
+            const filename = `post-${new Date().toISOString().split('T')[0]}.md`;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/markdown;charset=utf-8,' + encodeURIComponent(content));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // 에디터 초기화
+        function clearEditor() {
+            if (confirm('정말 삭제하시겠습니까?')) {
+                textarea.value = '';
+                updatePreview();
+            }
+        }
+
+        // 단축키: Ctrl+S (또는 Cmd+S)로 다운로드
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                downloadMarkdown();
+            }
+        });
+    </script>
+</body>
+</html>
