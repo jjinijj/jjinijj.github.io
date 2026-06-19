@@ -2,7 +2,7 @@
 
 layout: post
 title: "[Ovendo] 개발일지 #002 — 질문 분류에서 Rule Search로"
-date: 2026-06-20
+date: 2026-06-19
 categories: [ovendo, development-log]
 tags: [rule-engine, typescript, ai]
 ---
