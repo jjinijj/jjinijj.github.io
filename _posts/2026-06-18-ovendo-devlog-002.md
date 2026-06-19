@@ -1,12 +1,13 @@
 ---
 
-title: Ovendo 개발일지 #2 - 질문 분류에서 Rule Search로
+layout: post
+title: "[Ovendo] 개발일지 #002 — 질문 분류에서 Rule Search로"
 date: 2026-06-20
 categories: [ovendo, development-log]
 tags: [rule-engine, typescript, ai]
 ---
 
-# Ovendo 개발일지 #2 - 질문 분류에서 Rule Search로
+# Ovendo 개발일지 #002 - 질문 분류에서 Rule Search로
 
 이번 작업에서는 질문을 받아 답변을 만드는 흐름을 조금 더 구조화했다.
 
