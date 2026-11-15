@@ -54,10 +54,7 @@ permalink: /about/
 ## Links
 
 GitHub
-
-* [jjinijj](https://github.com/jjinijj)
-* [jjinsword](https://github.com/jjinsword)
+→ [jjinijj](https://github.com/jjinijj)
 
 Projects & Experiments
-
-* [jjinsword](https://github.com/jjinsword)
+→ [jjinsword](https://github.com/jjinsword)
