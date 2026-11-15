@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[TripBranch] 개발일지 #008 — 18초가 0.33초가 됐다는 측정을 다시 재 보니"
-date: 2026-11-01
+date: 2026-11-01 11:47:22 +0900
 categories: TripBranch
 ---
 

@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #009 — Rule만으로는 부족했다. knowledge.md를 추가한 이유"
 date: 2026-06-29
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, knowledge-management, research, rag, document-rag]
 ---
 

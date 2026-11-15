@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #007 — 기존 Rule 재정립하기"
 date: 2026-06-23
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, rule-audit, validation, testing, knowledge-quality]
 ---
 

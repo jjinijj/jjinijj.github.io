@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #008 — Rule Coverage 확장과 다음 구조 정리"
 date: 2026-06-27
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, rule-coverage, metadata, rag, testing, architecture]
 ---
 

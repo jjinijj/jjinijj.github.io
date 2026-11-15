@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #010 — TypeScript Rule Engine을 Python으로 포팅하기"
 date: 2026-07-02
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, typescript, python, porting, rag]
 ---
 

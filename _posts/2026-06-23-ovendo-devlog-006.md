@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #006 — Rule Audit으로 지식 품질 보강하기"
 date: 2026-06-23
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-audit, knowledge-quality, llm, validation, rule-engine]
 ---
 

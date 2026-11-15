@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #003 — 지식을 Rule로 바꾸기"
 date: 2026-06-22
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, knowledge, typescript, baking]
 ---
 

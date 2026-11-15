@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #005 — 코드는 일반화하고 지식은 데이터로 이동하기"
 date: 2026-06-23
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, architecture, testing, validation, typescript]
 ---
 

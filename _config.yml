@@ -38,6 +38,26 @@ github_usernames:
   - jjinijj
   - jjinsword
 
+# 홈 잔디(_layouts/home.html)에 쓰는 프로젝트별 색과 한 줄 설명.
+# 키는 글 front matter 의 categories 값과 대소문자까지 같아야 한다.
+# 여기 없는 프로젝트는 남는 색을 자동으로 받는다.
+projects:
+  TripBranch:
+    color: "#0072B2"
+    description: ""
+  NineOuting:
+    color: "#009E73"
+    description: ""
+  WhereWe:
+    color: "#CC79A7"
+    description: ""
+  MoodReturn:
+    color: "#D55E00"
+    description: ""
+  Ovendo:
+    color: "#E69F00"
+    description: ""
+
 # Build settings
 theme: minima
 plugins:

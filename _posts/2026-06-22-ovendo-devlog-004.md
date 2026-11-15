@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #004 — Rule 엔진을 안정화하기"
 date: 2026-06-22
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-engine, testing, validation, architecture, typescript]
 ---
 

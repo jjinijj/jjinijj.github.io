@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[NineOuting] 개발일지 #002 — 오류율은 그대로인데 설정을 바꾼 이유"
-date: 2026-11-01
+date: 2026-11-01 12:44:09 +0900
 categories: NineOuting
 ---
 

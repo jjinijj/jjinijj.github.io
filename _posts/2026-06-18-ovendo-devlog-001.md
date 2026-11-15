@@ -3,7 +3,7 @@
 layout: post
 title: "[Ovendo] 개발일지 #001 — Rule 기반 베이킹 어시스턴트를 시작한 이유"
 date: 2026-06-18
-categories: [ovendo]
+categories: [Ovendo]
 tags: [devlog, rule-based, retrieval, llm, cli, baking]
 ---
 
