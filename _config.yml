@@ -44,19 +44,19 @@ github_usernames:
 projects:
   TripBranch:
     color: "#0072B2"
-    description: ""
+    description: "취향을 말하면 혼잡도까지 고려해 장소를 추천하는 여행 서비스"
   NineOuting:
     color: "#009E73"
-    description: ""
+    description: "회의 중 말을 실시간으로 받아 적고 안건을 정리하는 서비스"
   WhereWe:
     color: "#CC79A7"
-    description: ""
+    description: "NineOuting을 혼자 다시 만든 대면 회의 보드. 정한 것과 쟁점을 공용 화면에 띄운다"
   MoodReturn:
     color: "#D55E00"
-    description: ""
+    description: "기분을 한 줄 적으면 동물 직원이 엉뚱한 반품 영수증을 발급하는 서비스"
   Ovendo:
     color: "#E69F00"
-    description: ""
+    description: "베이킹이 잘못됐을 때 원인을 짚어 주는 Rule 기반 베이킹 어시스턴트"
 
 # Build settings
 theme: minima
