@@ -33,6 +33,10 @@ include: ["_pages"]
 #baseurl: "https://something-is-strange.tistory.com/" # the subpath of your site, e.g. /blog
 url: "https://jjinijj.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  jjinijj
+# 푸터에 표시할 GitHub 계정 목록 (_includes/social.html 에서 사용)
+github_usernames:
+  - jjinijj
+  - jjinsword
 
 # Build settings
 theme: minima
