@@ -12,9 +12,9 @@ tags: [devlog, rule-engine, rule-audit, validation, testing, knowledge-quality]
 이번 작업에서는 새로운 Rule을 추가하지 않았다.
 
 원래는 Chapter 2에서 `cookie_color` Rule을 추가하며 Rule Coverage를 확장할 계획이었다.
-하지만 새 Rule을 만들기 전에, 기존 Rule이 현재 정리된 Note 기준과 잘 맞는지 먼저 확인할 필요가 있었다.
+하지만 새 Rule을 만들기 전에, 기존 Rule이 현재 정리된 Note 기준과 잘 맞는지 먼저 확인해야 했다.
 
-이번 작업의 목적은 기능 확장이 아니라 **기존 Rule을 다시 정렬하는 것**이었다.
+이번 작업의 목적은 기능 확장이 아니라 **기존 Rule을 Note 기준에 다시 맞추는 것**이었다.
 
 대상 Rule은 다음 두 개였다.
 
@@ -43,8 +43,8 @@ Search
 Answer
 ```
 
-그런데 기존 Rule 일부가 최신 Note의 표현과 완전히 일치하지 않거나,
-이름과 기준이 조금 추상적으로 남아 있는 부분이 있었다.
+그런데 기존 Rule 중에는 최신 Note의 표현과 완전히 일치하지 않거나,
+이름과 기준이 조금 추상적인 부분이 있었다.
 
 이 상태에서 `cookie_color` Rule을 추가하면 Rule Coverage는 늘어나지만,
 기존 Rule과 새 Rule 사이의 기준이 흐려질 수 있다고 판단했다.
@@ -89,7 +89,7 @@ Rule이 Note를 정확히 반영하도록 만드는 데 집중했다.
 
 둘째, diagnostic id 중 일부가 note에 명시된 원인보다 추상적인 이름으로 남아 있었다.
 
-셋째, texture Rule에는 updated note에서 더 이상 직접적인 Diagnostic Signal로 남아 있지 않은 표현이 포함되어 있었다.
+셋째, texture Rule에는 updated note가 이제 Diagnostic Signal로 직접 다루지 않는 표현이 들어 있었다.
 
 예를 들어 `hard_texture`, `딱딱`, `질김` 관련 처리는 이번 정리에서 보류했다.
 
@@ -101,7 +101,7 @@ Note에 없는 내용은 JSON에 추가하지 않는다.
 
 ---
 
-## 4. spread / texture Rule 재정렬
+## 4. spread / texture Rule을 Note 기준에 다시 맞추기
 
 ### cookie_spread
 
@@ -195,7 +195,7 @@ dry_texture → 유지
 
 이번 작업에서 matching 알고리즘 자체는 변경하지 않았다.
 
-변경은 대부분 Rule JSON 정렬과 variant type 동기화에 가까웠다.
+바꾼 것은 대부분 Rule JSON을 Note에 맞추고 variant type을 그에 맞게 고친 정도였다.
 
 최종 테스트 결과는 다음과 같다.
 
@@ -229,7 +229,7 @@ CLI로 확인한 결과도 정상적으로 동작했다.
 
 ## 6. 이번 작업에서 얻은 것
 
-이번 작업은 기능을 추가한 것이 아니라, 기존 Rule을 기준에 맞게 다시 정렬한 작업이었다.
+이번 작업은 기능을 추가한 것이 아니라, 기존 Rule을 기준에 다시 맞춘 작업이었다.
 
 작업하면서 가장 크게 확인한 것은 다음이다.
 
@@ -239,13 +239,13 @@ CLI로 확인한 결과도 정상적으로 동작했다.
 
 | 항목          | 결과                                    |
 | ----------- | ------------------------------------- |
-| 기존 Rule 점검  | `cookie_spread`, `cookie_texture` 재정렬 |
-| Rule 기준 정리  | updated note 기준으로 ID와 variant 정렬      |
+| 기존 Rule 점검  | `cookie_spread`, `cookie_texture` 기준 맞춤 |
+| Rule 기준 정리  | updated note 기준으로 ID와 variant 맞춤      |
 | 지식 관리 원칙 확인 | Note에 없는 내용은 JSON에 추가하지 않음            |
 | 엔진 영향       | matching 알고리즘 변경 없음                   |
 | 테스트         | 13/13 pass                            |
 
-이번 작업에서 가장 크게 확인한 점은 Rule Engine을 바꾸지 않아도 지식 품질을 개선할 수 있다는 것이었다. 검색 알고리즘이나 엔진 구조는 그대로 두고, 기존 Rule JSON을 updated note 기준으로 재정렬한 뒤 테스트로 검증하는 것만으로도 Rule 기반 구조의 신뢰도를 높일 수 있었다.
+이번 작업으로 알게 된 것은 Rule Engine을 바꾸지 않아도 지식 품질을 높일 수 있다는 점이다. 검색 알고리즘이나 엔진 구조는 그대로 두고, 기존 Rule JSON을 updated note 기준에 다시 맞춘 뒤 테스트로 검증하는 것만으로도 Rule 기반 구조의 신뢰도를 높일 수 있었다.
 
 
 ---
@@ -269,7 +269,7 @@ CLI로 확인한 결과도 정상적으로 동작했다.
 refine existing cookie rules from updated notes
 ```
 
-이번 작업은 새 기능을 추가한 로그라기보다, 확장 전에 기준을 다시 세운 작업이었다.
+이번 작업은 새 기능을 추가했다기보다, 확장 전에 기준을 다시 세운 작업이었다.
 
 앞으로 Rule이 늘어나더라도 이 원칙은 유지하려고 한다.
 

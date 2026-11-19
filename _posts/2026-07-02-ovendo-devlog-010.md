@@ -22,7 +22,7 @@ Ovendo Chapter 3에서는 기존에 TypeScript로 구현했던 Rule Engine v1을
 
 처음 Rule Engine v1은 TypeScript로 구현했다.
 
-TypeScript는 Rule 구조를 빠르게 설계하고, JSON 기반 규칙을 검증하며, 사용자의 질문에 따라 어떤 Rule과 Variant가 선택되는지 확인하기에 좋았다.
+TypeScript로는 Rule 구조를 빠르게 설계하고, JSON 기반 규칙을 검증하고, 질문에 따라 어떤 Rule과 Variant가 선택되는지 확인하기 좋았다.
 
 TypeScript 구현을 통해 먼저 검증한 흐름은 다음과 같다.
 
@@ -157,7 +157,7 @@ rules/problems/
 
 즉, TypeScript와 Python이 같은 Rule 데이터를 읽는다.
 
-이 구조 덕분에 지식은 여전히 JSON에 남고, 구현 언어만 달라져도 Rule 데이터는 재사용할 수 있다.
+이 구조 덕분에 지식은 여전히 JSON에 남고, 구현 언어가 달라져도 Rule 데이터를 그대로 재사용할 수 있다.
 
 ---
 
@@ -183,7 +183,7 @@ cookie_cracking
 두 번째는 **검색 대상 제한**이었다.
 
 Rule JSON에는 `searchDescription` 필드가 있지만, 현재 Rule Search는 이 필드를 사용하지 않는다.
-검색은 오직 `match.keywords`를 기준으로 수행한다.
+검색은 `match.keywords`만 기준으로 한다.
 
 만약 Python에서 Rule JSON 전체 문자열을 검색 대상으로 삼으면 TypeScript와 다른 결과가 나올 수 있다.
 그래서 Python 구현에서도 검색 범위를 기존과 동일하게 유지했다.
@@ -251,7 +251,7 @@ python -m ovendo_rule_engine.cli.main --json "쿠키가 안 퍼져요"
 쿠키가 안 퍼져요
 ```
 
-CLI는 새로운 진단 로직을 가지지 않는다.
+CLI에는 따로 진단 로직이 없다.
 단순히 `answer_question()`을 호출하고, 결과를 formatted text 또는 JSON으로 출력하는 얇은 실행 레이어다.
 
 ---
@@ -344,7 +344,7 @@ Ovendo Chapter 3의 핵심은 다음과 같다.
 AI 확장보다 Rule Engine Core 완성
 ```
 
-이번 작업을 통해 Ovendo는 TypeScript Reference Implementation과 Python Ported Implementation을 함께 갖게 되었다.
+이번 작업으로 Ovendo에는 TypeScript Reference Implementation과 Python Ported Implementation이 함께 생겼다.
 
 Ovendo의 방향은 여전히 같다.
 

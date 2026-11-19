@@ -154,7 +154,7 @@ CLI
 
 이번 작업에서는 Rule을 Registry를 통해 관리하도록 정리했다.
 
-Search는 개별 Rule 파일을 직접 바라보는 것이 아니라, Registry를 통해 Rule 목록에 접근한다.
+Search는 Rule 파일을 하나씩 직접 읽지 않고, Registry에서 Rule 목록을 받아 쓴다.
 
 이렇게 분리하면 앞으로 Rule이 늘어나도 Search 로직이 특정 Rule에 직접 의존하지 않게 된다.
 
@@ -173,7 +173,7 @@ Variant: none
 
 즉, 시스템은 관련 Rule을 찾을 수 있지만, 질문의 의도와 세부 유형은 아직 제대로 분류하지 못한다.
 
-이 문제를 해결하려면 classifier가 texture 관련 질문을 이해할 수 있도록 확장되어야 한다.
+이 문제를 해결하려면 texture 관련 질문도 이해하도록 classifier를 확장해야 한다.
 
 예를 들어 앞으로는 다음과 같은 분류가 가능해야 한다.
 
@@ -194,7 +194,7 @@ Matched Rule: cookie_texture
 JSON Rule은 실행을 위한 데이터다.
 반면 Markdown Note는 Rule의 근거를 남기는 기록이다.
 
-둘을 분리하면 Rule이 단순한 설정 파일이 아니라, 근거를 가진 지식 구조로 관리될 수 있다.
+둘을 분리하면 Rule을 단순한 설정 파일이 아니라, 근거가 남아 있는 지식으로 관리할 수 있다.
 
 정리하면 다음과 같다.
 
@@ -224,5 +224,5 @@ Rule이 늘어날수록 중요한 것은 단순히 Rule을 많이 추가하는 �
 * `cookie_texture` Rule과 classifier 결과 연결
 * CLI 출력에서 intent, variant, matchedRule 관계 확인
 
-현재는 Rule Search가 먼저 가능성을 보여준 단계다.
+현재는 Rule Search만 먼저 제대로 동작하는 단계다.
 다음 단계에서는 질문 분류와 Rule Search가 더 자연스럽게 이어지도록 정리할 예정이다.

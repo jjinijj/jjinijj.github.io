@@ -40,7 +40,7 @@ cookie_spread
 cookie_texture
 ```
 
-따라서 현재 Ovendo는 총 5개의 Cookie Rule을 가진다.
+따라서 현재 Ovendo의 Cookie Rule은 총 5개다.
 
 ```text
 cookie_spread
@@ -225,7 +225,7 @@ Rule Engine v1 자체를 크게 바꾸지 않고도 Rule을 추가할 수 있었
 | Metadata 필요성      | Rule 자체를 설명하는 정보가 필요     |
 | RAG 적용 시점         | 아직 구현보다 준비 단계가 적절        |
 
-이번 작업에서 가장 중요한 점은 Rule Engine v1이 신규 Rule 추가에 대응할 수 있다는 것을 확인한 것이다.
+이번 작업에서 가장 중요한 수확은 Rule Engine v1을 고치지 않고도 새 Rule을 추가할 수 있다는 점을 확인한 것이다.
 
 또한 Rule이 늘어날수록 단순한 keyword matching보다, Rule의 역할과 경계를 명확히 관리하는 일이 더 중요해진다는 점도 확인했다.
 
