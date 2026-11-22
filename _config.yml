@@ -28,7 +28,13 @@ header_pages:
   - about.markdown
   
 description: >- # this means to ignore newlines until "baseurl:"
-  A personal dev log by sis-jin
+  AI 에이전트와 Rule 기반 서비스를 만들며 쓰는 sis-jin의 개발 일지
+lang: ko
+# 홈 블루잉크 띠의 큰 문장 (_layouts/home.html)
+home_headline: "막힌 지점과 바꾼 결정을 그대로 적는 개발 기록"
+# 홈 사이드바 프로필 카드 (_layouts/home.html)
+avatar: /assets/img/avatar.webp
+author_bio: "게임·앱·VR 개발을 거쳐 지금은 AI 에이전트 서비스를 만들고 있어요."
 include: ["_pages"]
 #baseurl: "https://something-is-strange.tistory.com/" # the subpath of your site, e.g. /blog
 url: "https://jjinijj.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
@@ -38,9 +44,9 @@ github_usernames:
   - jjinijj
   - jjinsword
 
-# 홈 잔디(_layouts/home.html)에 쓰는 프로젝트별 색과 한 줄 설명.
+# 프로젝트별 한 줄 설명. 홈 프로젝트 칩·막대·잔디 필터와 Categories 페이지에 쓴다.
 # 키는 글 front matter 의 categories 값과 대소문자까지 같아야 한다.
-# 여기 없는 프로젝트는 남는 색을 자동으로 받는다.
+# color 는 지금 디자인(블루잉크 × 코랄)에서는 쓰지 않는다.
 projects:
   TripBranch:
     color: "#0072B2"

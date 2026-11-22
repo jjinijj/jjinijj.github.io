@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{%- comment -%}
+  minima 2.5.2 의 page.html 을 덮어쓴다.
+  블루잉크 띠 안에 터미널 프롬프트 한 줄(prompt) + 제목 + 소개(intro).
+  front matter: prompt, intro, avatar(이미지 경로, 있으면 띠 오른쪽에 원형으로)
+{%- endcomment -%}
+<article class="page">
+  <header class="hero">
+    <div class="wrapper hero-inner{% if page.avatar %} has-avatar{% endif %}">
+      <div class="hero-text">
+        {%- if page.prompt %}<p class="hero-prompt">{{ page.prompt | escape }}</p>{% endif %}
+        <h1 class="hero-title">{{ page.heading | default: page.title | escape }}</h1>
+        {%- if page.intro %}<div class="hero-desc">{{ page.intro | markdownify }}</div>{% endif %}
+      </div>
+      {%- if page.avatar -%}
+      <img class="hero-avatar" src="{{ page.avatar | relative_url }}" alt="{{ site.author | default: site.Author | escape }} 프로필 일러스트" width="220" height="220">
+      {%- endif -%}
+    </div>
+  </header>
+
+  <div class="wrapper page-body">
+    {{ content }}
+  </div>
+</article>

@@ -1,6 +1,7 @@
 ---
 title: Tistory
 permalink: /tistory/
+external: https://something-is-strange.tistory.com
 ---
 
 <script>

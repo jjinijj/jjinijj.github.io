@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{%- comment -%}
+  minima 2.5.2 의 default.html 을 덮어쓴다.
+  레이아웃마다 블루잉크 띠(hero)를 화면 끝까지 깔 수 있도록 .wrapper 를 여기서 감싸지 않는다.
+  각 레이아웃(home, post, page)이 필요한 곳에 .wrapper 를 직접 둔다.
+{%- endcomment -%}
+<html lang="{{ page.lang | default: site.lang | default: "ko" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      {{ content }}
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>

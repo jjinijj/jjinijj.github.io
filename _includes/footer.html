@@ -1,0 +1,24 @@
+{%- comment -%} minima 2.5.2 의 footer.html 을 덮어쓴다. 메일·프로필은 홈 사이드바와 About 에 두고, 푸터에는 GitHub 계정만 작게 남긴다. {%- endcomment -%}
+{%- assign title_parts = site.title | split: "." -%}
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+  <div class="wrapper site-footer-inner">
+    <a class="footer-title" href="{{ "/" | relative_url }}">
+      {%- if title_parts.size > 1 -%}
+        {{ title_parts.first | escape }}<span class="site-title-ext">.{{ title_parts | shift | join: "." | escape }}</span>
+      {%- else -%}
+        {{ site.title | escape }}
+      {%- endif -%}
+    </a>
+    <p class="footer-desc">{{ site.description | escape }}</p>
+    {%- comment -%} GitHub 계정: 계정이 둘이라 아이콘만으로는 구분이 안 돼서 이름을 같이 쓴다 {%- endcomment -%}
+    {%- if site.github_usernames -%}{%- assign gh_list = site.github_usernames -%}{%- elsif site.github_username -%}{%- assign gh_list = site.github_username | split: " " -%}{%- endif -%}
+    {%- if gh_list -%}
+    <ul class="footer-links mono">
+      {%- for gh in gh_list -%}
+      <li><a href="https://github.com/{{ gh | cgi_escape | escape }}" aria-label="GitHub {{ gh | escape }}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>{{ gh | escape }}</a></li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+  </div>
+</footer>

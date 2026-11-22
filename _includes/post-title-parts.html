@@ -1,0 +1,18 @@
+{%- comment -%}
+  글 제목 "[프로젝트] 개발일지 #004 — 문장" 을 나눈다.
+  include.title 을 받아 아래 변수를 남긴다 (Liquid include 는 assign 을 호출한 쪽과 공유한다).
+    tp_label : "개발일지 #004"  (형식이 다르면 빈 값)
+    tp_text  : "문장"           (형식이 다르면 제목 전체)
+{%- endcomment -%}
+{%- assign tp_label = "" -%}
+{%- assign tp_text = include.title -%}
+{%- assign tp_parts = include.title | split: " — " -%}
+{%- if tp_parts.size > 1 -%}
+  {%- assign tp_head = tp_parts.first -%}
+  {%- assign tp_text = include.title | remove_first: tp_head | remove_first: " — " -%}
+  {%- if tp_head contains "] " -%}
+    {%- assign tp_label = tp_head | split: "] " | last -%}
+  {%- else -%}
+    {%- assign tp_label = tp_head -%}
+  {%- endif -%}
+{%- endif -%}

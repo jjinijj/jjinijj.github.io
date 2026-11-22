@@ -1,0 +1,18 @@
+{%- comment -%}
+  프로젝트(카테고리)를 글이 많은 순으로 정렬해 project_order(이름 배열)와 project_max(최다 글 수)를 남긴다.
+  "0010|Ovendo" 처럼 글 수를 0 으로 채운 문자열을 만들어 정렬한 뒤 뒤집는다.
+{%- endcomment -%}
+{%- capture po_keys -%}
+  {%- for category in site.categories -%}
+    {%- assign po_n = category[1].size | prepend: "0000" | slice: -4, 4 -%}
+    {{ po_n }}|{{ category[0] }}{% unless forloop.last %};;{% endunless %}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign po_sorted = po_keys | split: ";;" | sort | reverse -%}
+{%- assign project_order = "" | split: "" -%}
+{%- assign project_max = 1 -%}
+{%- for k in po_sorted -%}
+  {%- assign po_name = k | split: "|" | last -%}
+  {%- assign project_order = project_order | push: po_name -%}
+  {%- if forloop.first -%}{%- assign project_max = k | split: "|" | first | plus: 0 -%}{%- endif -%}
+{%- endfor -%}

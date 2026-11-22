@@ -1,0 +1,138 @@
+---
+layout: default
+---
+{%- comment -%}
+  minima 2.5.2 의 _layouts/post.html 을 덮어쓴다.
+  - 머리: 프로젝트 칩(누르면 카테고리 목록) · "개발일지 #번호"(코랄) · 날짜 / 제목 문장 / 태그
+    제목이 "[프로젝트] 개발일지 #004 — 문장" 형식이면 문장만 크게 보여 주고 앞부분은 메타로 뺀다.
+  - 본문 오른쪽: 목차(본문 h2·h3 로 브라우저에서 만든다, 2개 미만이면 숨김) + 시리즈 진행 막대
+  - 본문 아래: 같은 프로젝트 안에서 이전·다음 글
+  - 날짜 형식은 홈과 같게 (site.minima.date_format, 기본 %Y.%m.%d)
+{%- endcomment -%}
+{%- assign project = page.categories | first -%}
+{%- assign date_format = site.minima.date_format | default: "%Y.%m.%d" -%}
+{%- include post-title-parts.html title=page.title -%}
+
+{%- comment -%}
+  같은 프로젝트 글을 오래된 순으로 놓고 지금 글의 위치를 찾는다.
+  site.categories 는 Jekyll 이 날짜(같으면 파일 이름) 기준 최신순으로 정렬해 두므로 뒤집기만 한다.
+  sort: "date" 는 같은 날짜 글의 순서를 보장하지 않아 #006·#007 처럼 뒤바뀐다.
+{%- endcomment -%}
+{%- if project -%}
+  {%- assign series = site.categories[project] | reverse -%}
+  {%- for p in series -%}
+    {%- if p.url == page.url -%}
+      {%- assign series_index = forloop.index -%}
+      {%- assign series_i0 = forloop.index0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if series_i0 > 0 -%}{%- assign prev_i = series_i0 | minus: 1 -%}{%- assign series_prev = series[prev_i] -%}{%- endif -%}
+  {%- assign next_i = series_i0 | plus: 1 -%}
+  {%- if next_i < series.size -%}{%- assign series_next = series[next_i] -%}{%- endif -%}
+{%- endif -%}
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-hero">
+    <div class="wrapper post-hero-inner">
+      <p class="post-hero-meta mono">
+        {%- if project -%}
+        <a class="cat-chip" href="{{ '/categories/' | relative_url }}#{{ project | slugify }}">{{ project | escape }}</a>
+        {%- endif -%}
+        {%- if tp_label != "" %}<span class="post-no">{{ tp_label | escape }}</span>{% endif -%}
+        <time class="dt-published muted" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: date_format }}</time>
+      </p>
+      <h1 class="post-title p-name" itemprop="name headline">{{ tp_text | escape }}</h1>
+      {%- if page.tags.size > 0 -%}
+      <ul class="post-tags">
+        {%- for tag in page.tags -%}
+        <li><a href="{{ '/tags/' | relative_url }}#{{ tag | uri_escape }}">#{{ tag | escape }}</a></li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+      {%- if page.author -%}
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}
+    </div>
+  </header>
+
+  <div class="wrapper post-layout">
+    <div class="post-main">
+      <div class="post-content e-content" itemprop="articleBody">
+        {{ content }}
+      </div>
+
+      {%- if series_prev or series_next -%}
+      <nav class="series-nav" aria-label="{{ project | escape }} 이전·다음 글">
+        {%- if series_prev -%}
+          {%- include post-title-parts.html title=series_prev.title -%}
+          <a href="{{ series_prev.url | relative_url }}">
+            <span class="mono muted">← 이전{% if tp_label != "" %} {{ tp_label | split: " " | last }}{% endif %}</span>
+            <span class="series-nav-title">{{ tp_text | escape }}</span>
+          </a>
+        {%- else -%}
+          <span class="is-empty"><span class="mono muted">← 이전</span><span class="series-nav-title muted">첫 글</span></span>
+        {%- endif -%}
+        {%- if series_next -%}
+          {%- include post-title-parts.html title=series_next.title -%}
+          <a class="is-next" href="{{ series_next.url | relative_url }}">
+            <span class="mono muted">다음{% if tp_label != "" %} {{ tp_label | split: " " | last }}{% endif %} →</span>
+            <span class="series-nav-title">{{ tp_text | escape }}</span>
+          </a>
+        {%- else -%}
+          <span class="is-next is-empty"><span class="mono muted">다음 →</span><span class="series-nav-title muted">아직 없음</span></span>
+        {%- endif -%}
+      </nav>
+      {%- endif -%}
+    </div>
+
+    <aside class="post-side">
+      <nav class="toc" aria-labelledby="toc-title" hidden>
+        <h2 id="toc-title" class="mono">목차</h2>
+        <ul></ul>
+      </nav>
+      {%- if project and series.size > 1 -%}
+      <section class="series-card">
+        <h2><a href="{{ '/categories/' | relative_url }}#{{ project | slugify }}">{{ project | escape }}</a> 시리즈 · {{ series.size }}편</h2>
+        <div class="series-bar" aria-hidden="true">
+          {%- for p in series -%}<span{% if forloop.index == series_index %} class="is-current"{% elsif forloop.index < series_index %} class="is-read"{% endif %}></span>{%- endfor -%}
+        </div>
+        <p class="muted">{{ series.size }}편 중 {{ series_index }}번째 글</p>
+      </section>
+      {%- endif -%}
+    </aside>
+  </div>
+
+  {%- if site.disqus.shortname -%}
+  <div class="wrapper">{%- include disqus_comments.html -%}</div>
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+<script>
+(function () {
+  // 본문 h2·h3 로 목차를 만든다. 지금 읽는 구역은 코랄 선으로 표시.
+  var toc = document.querySelector('.toc');
+  var heads = document.querySelectorAll('.post-content h2[id], .post-content h3[id]');
+  if (!toc || heads.length < 2) return;
+  var ul = toc.querySelector('ul'), links = [];
+  heads.forEach(function (h) {
+    var li = document.createElement('li'), a = document.createElement('a');
+    a.href = '#' + h.id; a.textContent = h.textContent;
+    if (h.tagName === 'H3') li.className = 'is-sub';
+    li.appendChild(a); ul.appendChild(li); links.push(a);
+  });
+  toc.hidden = false;
+  function onScroll() {
+    var cur = 0;
+    heads.forEach(function (h, i) { if (h.getBoundingClientRect().top < 120) cur = i; });
+    links.forEach(function (a, i) {
+      a.classList.toggle('is-active', i === cur);
+      if (i === cur) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
