@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[TripBranch] 개발일지 #002 — TripBranch AI 기능 패키지 분리와 팀 역할 재배분"
+description: "너무 잘게 나뉜 AI 기능을 연관된 것끼리 네 개의 책임 패키지로 묶고, 팀 역할을 다시 나눴다."
 date: 2026-07-22
 categories: [TripBranch]
 tags: [Planning, AI-Agent]

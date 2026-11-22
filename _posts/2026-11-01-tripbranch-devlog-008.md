@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[TripBranch] 개발일지 #008 — 18초가 0.33초가 됐다는 측정을 다시 재 보니"
+description: "장소 조회가 18초에서 0.33초로 줄었다는 기록을 다시 재 보니 재현되지 않아, 시간 대신 API 호출이 20회에서 0회로 줄었다고 말하기로 했다."
 date: 2026-11-01 11:47:22 +0900
 categories: TripBranch
 ---

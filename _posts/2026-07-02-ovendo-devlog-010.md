@@ -2,6 +2,7 @@
 
 layout: post
 title: "[Ovendo] 개발일지 #010 — TypeScript Rule Engine을 Python으로 포팅하기"
+description: "TypeScript로 검증한 Rule Engine을 Python으로 그대로 옮겨, 임베딩·검색·LLM 실험의 기반을 만들었다."
 date: 2026-07-02
 categories: [Ovendo]
 tags: [devlog, rule-engine, typescript, python, porting, rag]

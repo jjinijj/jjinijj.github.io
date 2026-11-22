@@ -2,6 +2,7 @@
 
 layout: post
 title: "[TripBranch] 개발일지 #005 — 팀 계정 인프라 세팅 기록"
+description: "4명이 Claude를 함께 쓰려고 Team 플랜을 열고, 팀 도메인과 메일을 세팅하며 겪은 시행착오를 정리했다."
 date: 2026-08-24
 categories: TripBranch
 ---

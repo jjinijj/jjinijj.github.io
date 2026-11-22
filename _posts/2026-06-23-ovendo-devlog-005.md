@@ -2,6 +2,7 @@
 
 layout: post
 title: "[Ovendo] 개발일지 #005 — 코드는 일반화하고 지식은 데이터로 이동하기"
+description: "TypeScript 코드 안에 들어가 있던 베이킹 지식을 Rule 데이터로 옮겨, 코드는 Rule을 읽고 처리하는 일만 하게 했다."
 date: 2026-06-23
 categories: [Ovendo]
 tags: [devlog, rule-engine, architecture, testing, validation, typescript]

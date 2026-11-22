@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[NineOuting] 개발일지 #002 — 오류율은 그대로인데 설정을 바꾼 이유"
+description: "오류율이 비슷하면 사용자가 고칠 수 없는 빠진 글자가 적은 쪽을 고른다는 기준으로 음성 인식 설정을 정했다."
 date: 2026-11-01 12:44:09 +0900
 categories: NineOuting
 ---

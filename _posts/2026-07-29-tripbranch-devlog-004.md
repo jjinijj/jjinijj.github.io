@@ -2,6 +2,7 @@
 
 layout: post
 title: "[TripBranch] 개발일지 #004 — 장소 데이터 최신화와 집중률 매핑 테이블 구축"
+description: "장소 데이터를 최신화하고, 집중률 데이터의 장소명을 TourAPI content_id에 잇는 매핑 테이블로 112개 중 100개를 연결했다."
 date: 2026-07-29
 categories: TripBranch
 ---
