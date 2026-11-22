@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #003 — 지식을 Rule로 바꾸기"
 description: "직접 조사한 베이킹 지식을 Markdown Note로 정리하고, 실행 가능한 Rule JSON으로 바꾸는 과정을 처음부터 직접 해 봤다."
 date: 2026-06-22
 categories: [Ovendo]
-tags: [devlog, rule-engine, knowledge, typescript, baking]
+tags: [rule-engine, knowledge, typescript, baking]
 ---
 
 ## 오늘의 개발 주제

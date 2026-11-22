@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #004 — Rule 엔진을 안정화하기"
 description: "새 기능 대신, Rule이 늘어나도 코드를 계속 고치지 않도록 Rule 엔진 구조를 정리하고 안전장치를 더했다."
 date: 2026-06-22
 categories: [Ovendo]
-tags: [devlog, rule-engine, testing, validation, architecture, typescript]
+tags: [rule-engine, testing, validation, architecture, typescript]
 ---
 
 ## 오늘의 개발 주제

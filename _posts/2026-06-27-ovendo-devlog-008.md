@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #008 — Rule Coverage 확장과 다음 구조 정
 description: "Rule을 늘려도 기존 Rule과의 경계가 유지되는지 확인하며 Rule Coverage를 넓히고, 다음 구조를 정리했다."
 date: 2026-06-27
 categories: [Ovendo]
-tags: [devlog, rule-engine, rule-coverage, metadata, rag, testing, architecture]
+tags: [rule-engine, rule-coverage, metadata, rag, testing, architecture]
 ---
 
 ## 오늘의 개발 주제

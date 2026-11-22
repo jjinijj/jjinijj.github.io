@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #006 — Rule Audit으로 지식 품질 보강하�
 description: "기존 Rule 일부에 LLM의 해석이 섞여 있을 수 있다는 걸 알고, 확장을 멈추고 Rule의 근거와 품질을 다시 점검했다."
 date: 2026-06-23
 categories: [Ovendo]
-tags: [devlog, rule-audit, knowledge-quality, llm, validation, rule-engine]
+tags: [rule-audit, knowledge-quality, llm, validation, rule-engine]
 ---
 
 ## 오늘의 개발 주제

@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #007 — 기존 Rule 재정립하기"
 description: "새 Rule을 만들기 전에, 기존 cookie_spread와 cookie_texture Rule을 정리된 Note 기준에 다시 맞췄다."
 date: 2026-06-23
 categories: [Ovendo]
-tags: [devlog, rule-engine, rule-audit, validation, testing, knowledge-quality]
+tags: [rule-engine, rule-audit, validation, testing, knowledge-quality]
 ---
 
 ## 오늘의 개발 주제
