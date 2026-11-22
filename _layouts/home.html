@@ -7,6 +7,8 @@ layout: default
   - 최근 글 개수: _config.yml 의 home_recent_posts (기본 7)
   - 프로젝트 색·한 줄 설명: _config.yml 의 projects.<카테고리>.color / description
     설정에 없는 프로젝트는 아래 palette 에서 남는 색을 자동으로 받는다.
+  - 칸 툴팁: 그날 마지막 글의 front matter description (없으면 제목). 클릭하면 그 글로 간다.
+    프로젝트 한 줄 설명은 범례에 마우스를 올리면 보인다.
   - 같은 날 글이 여러 개면 site.posts 순서(최신 먼저)에서 먼저 나오는 글 = 마지막 글의 색.
     date 에 시간이 없으면 같은 날짜끼리는 Jekyll 정렬(파일 이름 역순)을 따른다.
   GitHub Pages(Jekyll 3.x)에서도 돌도록 기본 필터(jsonify, slugify, date)만 쓴다.
@@ -39,6 +41,8 @@ layout: default
                  background: #24292f; color: #fff; font-size: 12px; line-height: 1.45;
                  word-break: keep-all; overflow-wrap: anywhere; }
   .contrib-tip strong { display: block; }
+  .contrib-tip .swatch { display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+                         margin-right: 6px; vertical-align: middle; }
   .contrib-tip .tip-meta { color: #c9d1d9; }
   .contrib-legend { list-style: none; margin: 10px 0 0; display: flex; flex-wrap: wrap;
                     gap: 6px 16px; font-size: 14px; }
@@ -104,7 +108,7 @@ layout: default
         "slugs": { {%- for category in site.categories -%}{{ category[0] | jsonify }}: {{ category[0] | slugify | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%} },
         "posts": [
           {%- for post in site.posts -%}
-          { "d": {{ post.date | date: "%Y-%m-%d" | jsonify }}, "c": {{ post.categories.first | jsonify }} }{%- unless forloop.last -%},{%- endunless -%}
+          { "d": {{ post.date | date: "%Y-%m-%d" | jsonify }}, "c": {{ post.categories.first | jsonify }}, "u": {{ post.url | relative_url | jsonify }}, "t": {{ post.title | jsonify }}, "s": {{ post.description | jsonify }} }{%- unless forloop.last -%},{%- endunless -%}
           {%- endfor -%}
         ]
       }
@@ -124,12 +128,13 @@ layout: default
       function label(k) { return k.replace(/-/g, '.'); }
 
       // site.posts 는 최신 글이 먼저다. 날짜별로 처음 만난 글 = 그날 마지막 글.
+      // 칸은 그 글을 대표로 삼는다: 색은 그 글의 프로젝트, 툴팁은 그 글의 description, 클릭은 그 글로.
       var order = [], counts = {}, byDay = {};
       data.posts.forEach(function (p) {
         if (!p.c) return;
         if (order.indexOf(p.c) < 0) order.push(p.c);
         counts[p.c] = (counts[p.c] || 0) + 1;
-        if (!byDay[p.d]) byDay[p.d] = { c: p.c, n: 0 };
+        if (!byDay[p.d]) byDay[p.d] = { post: p, n: 0 };
         byDay[p.d].n++;
       });
 
@@ -143,6 +148,8 @@ layout: default
 
       function href(c) { return data.categoriesUrl + '#' + (data.slugs[c] || ''); }
       function desc(c) { return (projects[c] && projects[c].description) || ''; }
+      // 글 한 줄 요약: front matter 의 description, 없으면 제목
+      function summary(p) { return p.s || p.t; }
 
       // 52주 전 주의 일요일부터 오늘이 들어 있는 주까지 (GitHub 와 같은 배치)
       var today = new Date(); today.setHours(0, 0, 0, 0);
@@ -161,12 +168,10 @@ layout: default
         }
         if (day && d <= today) {
           cell = document.createElement('a');
-          cell.href = href(day.c);
-          cell.style.background = colors[day.c];
-          cell.dataset.c = day.c;
+          cell.href = day.post.u;
+          cell.style.background = colors[day.post.c];
           cell.dataset.k = k;
-          cell.dataset.n = day.n;
-          cell.setAttribute('aria-label', label(k) + ' ' + day.c + (desc(day.c) ? ' — ' + desc(day.c) : ''));
+          cell.setAttribute('aria-label', label(k) + ' ' + day.post.c + ' — ' + summary(day.post));
         } else {
           cell = document.createElement('span');
           if (d > today) cell.className = 'is-future';
@@ -193,10 +198,12 @@ layout: default
       function show(e) {
         var t = e.target.closest ? e.target.closest('a.contrib-cell') : null;
         if (!t) return;
-        var c = t.dataset.c, n = +t.dataset.n;
+        var day = byDay[t.dataset.k], post = day.post, n = day.n;
         tip.textContent = '';
-        var s = document.createElement('strong'); s.textContent = c; tip.appendChild(s);
-        if (desc(c)) { var p = document.createElement('div'); p.textContent = desc(c); tip.appendChild(p); }
+        var s = document.createElement('strong'), sw = document.createElement('span');
+        sw.className = 'swatch'; sw.style.background = colors[post.c];
+        s.appendChild(sw); s.appendChild(document.createTextNode(post.c)); tip.appendChild(s);
+        var p = document.createElement('div'); p.textContent = summary(post); tip.appendChild(p);
         var meta = document.createElement('div'); meta.className = 'tip-meta';
         meta.textContent = label(t.dataset.k) + (n > 1 ? ' · 이날 글 ' + n + '편' : '');
         tip.appendChild(meta);
