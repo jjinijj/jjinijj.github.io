@@ -30,6 +30,9 @@ header_pages:
 description: >- # this means to ignore newlines until "baseurl:"
   AI 서비스를 만들며 쓰는 sis-jin의 개발 일지
 lang: ko
+# 글 날짜를 한국 시간으로 계산한다. 없으면 GitHub Pages 가 UTC 로 빌드해서,
+# 한국 시간 오전 9시 전에는 오늘 날짜 글을 "미래 글"로 보고 빼 버린다.
+timezone: Asia/Seoul
 # 홈 블루잉크 띠의 큰 문장 (_layouts/home.html)
 home_headline: "무엇을 왜 정했는지 적는 기록"
 # 홈 사이드바 프로필 카드 (_layouts/home.html)
