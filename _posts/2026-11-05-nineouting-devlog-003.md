@@ -4,6 +4,7 @@ title: "[NineOuting] 개발일지 #003 — 코드가 막은 교정이 모두 틀
 description: "오인식 교정 단계의 안전 규칙이 맞는 교정까지 막고 있어서, 막힌 사례를 하나씩 다시 보며 규칙을 풀었다."
 date: 2026-11-05
 categories: NineOuting
+tags: [speech-recognition, llm, error-correction, validation]
 ---
 
 ## 오늘의 개발 주제

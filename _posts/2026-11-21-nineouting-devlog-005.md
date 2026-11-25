@@ -4,6 +4,7 @@ title: "[NineOuting] 개발일지 #005 — 메모리를 줄이려다 CPU를 재�
 description: "메모리를 줄이려다 파드 수를 정하는 것은 CPU라는 걸 알았고, 회의를 나눠 묶어 디코딩하면 인식기 CPU가 약 30% 준다는 것을 쟀다."
 date: 2026-11-21
 categories: NineOuting
+tags: [infra, performance, kubernetes, measurement]
 ---
 
 ## 오늘의 개발 주제

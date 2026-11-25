@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #002 — 질문 분류에서 Rule Search로"
 description: "질문 분류 코드 안에 있던 Rule 선택 기준을 분리해, JSON 기반 Rule Search로 옮겼다."
 date: 2026-06-19
 categories: [Ovendo]
-tags: [rule-engine, rule-search, typescript, ai]
+tags: [rule-engine, rule-search, typescript]
 ---
 
 ## 오늘의 개발 주제

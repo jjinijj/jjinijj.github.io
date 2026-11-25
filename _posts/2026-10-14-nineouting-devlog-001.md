@@ -4,6 +4,7 @@ title: "[NineOuting] 개발일지 #001 — 녹음에서 들린 틱 소리를 따
 description: "실제 회의 녹음에 섞인 틱 소리의 원인을 찾아보니, 마이크 입력과 서버 수신 두 군데에 문제가 있었다."
 date: 2026-10-14
 categories: NineOuting
+tags: [speech-recognition, audio, debugging, ffmpeg]
 ---
 
 ## 오늘의 개발 주제

@@ -4,6 +4,7 @@ title: "[WhereWe] 개발일지 #003 — 질문에 답하던 에이전트가 먼�
 description: "질문에 답하는 기능과 먼저 알려주는 기능을 하나의 에이전트로 묶고, 숫자를 보며 감지 기준과 지시문을 고쳤다."
 date: 2026-11-19 18:30:00 +0900
 categories: WhereWe
+tags: [ai-agent, llm, prompt, rag]
 ---
 
 ## 오늘의 개발 주제

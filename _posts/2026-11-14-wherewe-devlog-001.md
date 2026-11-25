@@ -4,6 +4,7 @@ title: "[WhereWe] 개발일지 #001 — 결정이 화면에 뜨기까지 18초�
 description: "결정이 화면에 뜨기까지 걸리던 17.8초를, 결정만 따로 호출하고 합의가 나온 순간을 감지하게 해 5.2초로 줄였다."
 date: 2026-11-14
 categories: WhereWe
+tags: [llm, latency, prompt, speech-recognition]
 ---
 
 ## 오늘의 개발 주제

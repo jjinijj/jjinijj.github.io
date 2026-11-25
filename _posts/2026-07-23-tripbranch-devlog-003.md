@@ -4,6 +4,7 @@ title: "[TripBranch] 개발일지 #003 — 반복적인 장소 API 호출을 줄
 description: "장소 10곳 정보에 API 통신이 최대 21회, 약 10초 걸려서, 잘 바뀌지 않는 장소 정보는 DB에 미리 저장해 두기로 했다."
 date: 2026-07-23
 categories: TripBranch
+tags: [database, api, latency]
 ---
 
 ## 오늘의 개발 주제

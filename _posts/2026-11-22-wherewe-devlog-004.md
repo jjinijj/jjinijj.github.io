@@ -4,6 +4,7 @@ title: "[WhereWe] 개발일지 #004 — 아는 것을 답하게 하기보다 \"�
 description: "참석자 질문에 답하는 회의 도우미를 함정 질문을 섞은 질문 세트로 재고, 회의에 없는 내용을 지어내지 않는지 확인했다."
 date: 2026-11-22
 categories: WhereWe
+tags: [ai-agent, rag, evaluation, hallucination]
 ---
 
 ## 오늘의 개발 주제

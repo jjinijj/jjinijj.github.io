@@ -5,6 +5,7 @@ title: "[TripBranch] 개발일지 #001 — 피드백을 바탕으로 15일 MVP �
 description: "강사 피드백으로 15일 MVP에 비해 기능과 데이터 범위가 너무 넓다는 걸 확인하고, 범위를 좁혀 추천 흐름부터 완성하기로 했다."
 date: 2026-07-19
 categories: TripBranch
+tags: [planning, recommendation, evaluation]
 ---
 
 ## 피드백을 받은 배경

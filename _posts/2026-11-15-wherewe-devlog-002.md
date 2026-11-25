@@ -4,6 +4,7 @@ title: "[WhereWe] 개발일지 #002 — 시험은 통과했는데, 실제로 돌
 description: "빨라진 구조를 실제 음성 인식으로 돌려 보니, 시험에서 안 잡히던 버그 두 개와 내가 쓴 정답의 오류가 나왔다."
 date: 2026-11-15 12:48:24 +0900
 categories: WhereWe
+tags: [testing, debugging, evaluation, speech-recognition]
 ---
 
 ## 오늘의 개발 주제

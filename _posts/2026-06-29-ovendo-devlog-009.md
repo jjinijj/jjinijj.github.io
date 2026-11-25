@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #009 — Rule만으로는 부족했다. knowledge.
 description: "조사 결과를 Rule 생성에만 쓰지 않도록, note.md와 hold.md에 더해 knowledge.md를 두기로 했다."
 date: 2026-06-29
 categories: [Ovendo]
-tags: [rule-engine, knowledge-management, research, rag, document-rag]
+tags: [rule-engine, knowledge, research, rag, document-rag]
 ---
 
 ## 오늘의 개발 주제

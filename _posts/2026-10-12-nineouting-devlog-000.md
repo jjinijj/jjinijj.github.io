@@ -4,6 +4,7 @@ title: "[NineOuting] 개발일지 #000 — Whisper는 재 보지도 않고 뺐�
 description: "실시간·무료·CPU라는 조건부터 정하자 Whisper는 실측 전에 빠졌고, 남은 모델을 우리 회의로 다시 재 chunk-64로 바꿨다."
 date: 2026-10-12
 categories: NineOuting
+tags: [speech-recognition, model-selection, evaluation, streaming]
 ---
 
 ## 오늘의 개발 주제

@@ -5,7 +5,7 @@ title: "[Ovendo] 개발일지 #001 — Rule 기반 베이킹 어시스턴트를 
 description: "답이 그럴듯한 것보다 근거를 설명할 수 있어야 한다고 보고, LLM 답변기 대신 Rule 기반 베이킹 어시스턴트로 방향을 잡았다."
 date: 2026-06-18
 categories: [Ovendo]
-tags: [rule-based, retrieval, llm, cli, baking]
+tags: [rule-based, rag, llm, cli, baking]
 ---
 
 ## 오늘의 개발 주제

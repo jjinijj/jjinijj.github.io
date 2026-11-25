@@ -4,6 +4,7 @@ title: "[TripBranch] 개발일지 #006 — 공식 정보만으로 리뷰를 만�
 description: "관광공사 공식 정보만으로 장소 리뷰를 생성했지만, 가본 척하지 않기로 한 설계 때문에 취향으로 검색되는 문장이 나오지 않았다."
 date: 2026-08-25
 categories: TripBranch
+tags: [llm, synthetic-data, rag, validation]
 ---
 
 ## 오늘의 개발 주제

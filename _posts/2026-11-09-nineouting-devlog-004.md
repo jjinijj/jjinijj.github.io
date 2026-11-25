@@ -4,6 +4,7 @@ title: "[NineOuting] 개발일지 #004 — 음성 인식은 전화번호를 숫�
 description: "음성 인식이 전화번호를 공일공처럼 소리대로 적어서, 외부 AI로 보내기 전에 개인정보를 가리는 범위를 다시 정했다."
 date: 2026-11-09
 categories: NineOuting
+tags: [speech-recognition, privacy, pii]
 ---
 
 ## 오늘의 개발 주제

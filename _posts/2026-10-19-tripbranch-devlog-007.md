@@ -4,6 +4,7 @@ title: "[TripBranch] 개발일지 #007 — 무료 플랜에 들어가려고 벡�
 description: "무료 플랜 한도 500MB에 맞추려고 근거 문장 임베딩을 Pinecone으로 옮겨, DB를 1,340MB에서 222MB로 줄였다."
 date: 2026-10-19
 categories: TripBranch
+tags: [rag, vector-db, pinecone, database]
 ---
 
 ## 오늘의 개발 주제

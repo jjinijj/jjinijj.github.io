@@ -4,6 +4,7 @@ title: "[MoodReturn] 개발일지 #001 — 막을수록 메모가 비슷해졌�
 description: "위로 메모에 금지를 늘릴수록 메모가 비슷해지고 위로가 빠져서, 메모 형식은 코드가 고르고 예시를 보여 주는 방식으로 바꿨다."
 date: 2026-11-15 16:12:21 +0900
 categories: MoodReturn
+tags: [llm, prompt, text-generation, validation]
 ---
 
 ## 오늘의 개발 주제
