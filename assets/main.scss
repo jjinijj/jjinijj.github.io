@@ -220,11 +220,14 @@ a.contrib-cell:hover, a.contrib-cell:focus-visible { outline: 2px solid $text; o
 
 .post-layout { padding-top: 48px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 48px 64px; }
 .post-main { flex: 999 1 560px; min-width: 0; max-width: 720px; }
-.post-side { flex: 1 1 240px; display: flex; flex-direction: column; gap: 24px;
-  @include media-query($on-laptop) { order: -1; } }
-@media screen and (min-width: 1000px) {
-  .post-side > * { position: sticky; top: 24px; }
-  .post-side .series-card { position: static; }
+.post-side { flex: 1 1 240px; }
+// 시리즈와 목차를 한 덩어리로 묶어 함께 따라오게 한다 (따로 두면 스크롤할 때 겹친다)
+.post-side-inner { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 28px; }
+.series-inline { display: none; margin-bottom: 40px; }
+// 1000px 미만에서는 사이드바가 본문 아래로 밀리므로 숨기고, 시리즈 막대를 본문 맨 위에 둔다
+@media screen and (max-width: 999px) {
+  .post-side { display: none; }
+  .series-inline { display: block; }
 }
 
 .toc { h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: $muted; }
@@ -236,13 +239,22 @@ a.contrib-cell:hover, a.contrib-cell:focus-visible { outline: 2px solid $text; o
   a.is-active { border-left-color: $coral; color: $text; font-weight: 600; }
   @include media-query($on-laptop) { display: none; } }
 
-.series-card { background: $ground; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px;
-  h2 { margin: 0; font-size: 15px; font-weight: 700; }
-  p { margin: 0; font-size: 14px; } }
-.series-bar { display: flex; gap: 4px;
-  span { flex: 1 1 0; height: 6px; border-radius: 3px; background: $ink-100; }
-  .is-read { background: $ink; }
-  .is-current { background: $coral; } }
+// 시리즈 막대 (사이드바 목차 위 / 좁은 화면에서는 본문 맨 위)
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.series-side h2 { margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: $muted;
+  a, a:visited { color: $ink; } }
+.series-bar { list-style: none; margin: 0; display: flex; gap: 4px;
+  li { flex: 1 1 0; margin: 0; display: flex; }
+  a { position: relative; flex: 1 1 auto; height: 6px; border-radius: 3px; background: $ink-100; }
+  a.is-read { background: $ink; }
+  a.is-current { background: $coral; }
+  a:hover, a:focus-visible { outline: 2px solid $ink; outline-offset: 2px; }
+  a:hover::after, a:focus-visible::after {
+    content: attr(data-tip); position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 5;
+    width: max-content; max-width: 240px; padding: 6px 10px; border-radius: 6px;
+    background: $ink-900; color: #fff; font-size: 12px; line-height: 1.5; font-weight: 500; pointer-events: none; }
+  li:first-child a::after { left: 0; transform: none; }
+  li:last-child a::after { left: auto; right: 0; transform: none; } }
 
 .series-nav { margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;
   > a, > span { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; border: 1px solid $line;

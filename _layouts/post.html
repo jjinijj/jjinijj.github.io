@@ -5,7 +5,8 @@ layout: default
   minima 2.5.2 의 _layouts/post.html 을 덮어쓴다.
   - 머리: 프로젝트 칩(누르면 카테고리 목록) · "개발일지 #번호"(코랄) · 날짜 / 제목 문장 / 태그
     제목이 "[프로젝트] 개발일지 #004 — 문장" 형식이면 문장만 크게 보여 주고 앞부분은 메타로 뺀다.
-  - 본문 오른쪽: 목차(본문 h2·h3 로 브라우저에서 만든다, 2개 미만이면 숨김) + 시리즈 진행 막대
+  - 본문 오른쪽: 시리즈 막대 + 목차(본문 h2·h3 로 브라우저에서 만든다, 2개 미만이면 숨김). 둘이 함께 따라온다
+  - 좁은 화면: 사이드바를 숨기고 시리즈 막대를 본문 맨 위에 둔다
   - 본문 아래: 같은 프로젝트 안에서 이전·다음 글
   - 날짜 형식은 홈과 같게 (site.minima.date_format, 기본 %Y.%m.%d)
 {%- endcomment -%}
@@ -30,6 +31,23 @@ layout: default
   {%- assign next_i = series_i0 | plus: 1 -%}
   {%- if next_i < series.size -%}{%- assign series_next = series[next_i] -%}{%- endif -%}
 {%- endif -%}
+
+{%- comment -%}
+  시리즈 막대: 프로젝트 글 수만큼 칸. 앞 글은 블루잉크, 지금 글은 코랄, 뒤 글은 연한 칸.
+  칸마다 그 글로 가는 링크이고, 마우스를 올리면 번호와 제목이 뜬다.
+  넓은 화면에서는 오른쪽 목차 위(목차와 함께 따라온다), 좁은 화면에서는 본문 맨 위에 둔다.
+{%- endcomment -%}
+{%- capture series_bar -%}
+{%- if project and series.size > 1 -%}
+<ol class="series-bar">
+  {%- for p in series -%}
+  {%- include post-title-parts.html title=p.title -%}
+  <li><a href="{{ p.url | relative_url }}" class="{% if forloop.index == series_index %}is-current{% elsif forloop.index < series_index %}is-read{% endif %}"{% if forloop.index == series_index %} aria-current="page"{% endif %} data-tip="{% if tp_label != "" %}{{ tp_label | split: " " | last | escape }} {% endif %}{{ tp_text | escape }}"><span class="sr-only">{{ tp_label | escape }} {{ tp_text | escape }}</span></a></li>
+  {%- endfor -%}
+</ol>
+{%- endif -%}
+{%- endcapture -%}
+{%- include post-title-parts.html title=page.title -%}
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -58,6 +76,7 @@ layout: default
 
   <div class="wrapper post-layout">
     <div class="post-main">
+      {%- if series_bar != "" %}<div class="series-inline">{{ series_bar }}</div>{% endif -%}
       <div class="post-content e-content" itemprop="articleBody">
         {{ content }}
       </div>
@@ -87,19 +106,18 @@ layout: default
     </div>
 
     <aside class="post-side">
+      <div class="post-side-inner">
+      {%- if series_bar != "" -%}
+      <nav class="series-side" aria-label="{{ project | escape }} 시리즈 {{ series.size }}편 중 {{ series_index }}번째">
+        <h2 class="mono"><a href="{{ '/categories/' | relative_url }}#{{ project | slugify }}">{{ project | escape }}</a> 시리즈 · {{ series_index }}/{{ series.size }}</h2>
+        {{ series_bar }}
+      </nav>
+      {%- endif -%}
       <nav class="toc" aria-labelledby="toc-title" hidden>
         <h2 id="toc-title" class="mono">목차</h2>
         <ul></ul>
       </nav>
-      {%- if project and series.size > 1 -%}
-      <section class="series-card">
-        <h2><a href="{{ '/categories/' | relative_url }}#{{ project | slugify }}">{{ project | escape }}</a> 시리즈 · {{ series.size }}편</h2>
-        <div class="series-bar" aria-hidden="true">
-          {%- for p in series -%}<span{% if forloop.index == series_index %} class="is-current"{% elsif forloop.index < series_index %} class="is-read"{% endif %}></span>{%- endfor -%}
-        </div>
-        <p class="muted">{{ series.size }}편 중 {{ series_index }}번째 글</p>
-      </section>
-      {%- endif -%}
+      </div>
     </aside>
   </div>
 
